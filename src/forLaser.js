@@ -1,0 +1,17 @@
+import smoothPolyline from 'smooth-polyline';
+import { stretchTo } from './util/stretchTo';
+import { moveZeroTo } from './util/moveZeroTo';
+import { removeRepeatedValues } from './util/removeRepeatedValues';
+import { to2D } from './util/to2D';
+
+export const forLaser = (values) => {
+  const limitPN = stretchTo(values, 60).map((v) => Math.round(v));
+  const deduped = removeRepeatedValues(limitPN);
+  const zigzag = deduped.map((v, i) => (i % 2 ? -v : v));
+  const positions = moveZeroTo(zigzag, 90).map((v) => v + 5);
+  const points2D = to2D(positions);
+  const smoothed = smoothPolyline(smoothPolyline(points2D)).map((point) =>
+    Math.round(point[1]),
+  );
+  return smoothed;
+};
