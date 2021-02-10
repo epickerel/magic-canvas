@@ -30,7 +30,7 @@ const uint8_t table_positions [] PROGMEM = {
 `;
 
   console.log(code);
-  fs.writeFileSync('./arduino/magic-canvas-1/wave.h', code, {
+  fs.writeFileSync('./arduino/magic-canvas-2/wave.h', code, {
     encoding: 'utf8',
   });
 };

@@ -6,7 +6,7 @@ import { to2D } from './util/to2D';
 import { clearValuesBetween } from './util/clearValuesBetween';
 
 export const forTable = (values) => {
-  const limitPN = stretchTo(values, 12).map((v) => Math.round(v));
+  const limitPN = stretchTo(values, 11).map((v) => Math.round(v));
   const deduped = removeRepeatedValues(limitPN);
   const zigzag = deduped.map((v, i) => (i % 2 ? -v : v));
   const positions = moveZeroTo(zigzag, 87).map((v) => v + 5);
